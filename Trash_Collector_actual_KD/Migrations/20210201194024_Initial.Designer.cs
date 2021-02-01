@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Trash_Collector_actual_KD.Data;
 
-namespace Trash_Collector_actual_KD.Data.Migrations
+namespace Trash_Collector_actual_KD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210201194024_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,10 +50,17 @@ namespace Trash_Collector_actual_KD.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b063d1bf-0800-4877-9325-3f929291418a",
-                            ConcurrencyStamp = "019b2806-d965-4bb4-bbee-83da6389dda8",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "cb912a13-203a-4eb5-a039-be8f6c03146f",
+                            ConcurrencyStamp = "951c7239-a162-4c5b-9721-2a512bef020f",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        },
+                        new
+                        {
+                            Id = "cb36c253-e546-4e17-8b9b-3255f9938aef",
+                            ConcurrencyStamp = "dbb343f7-87b4-4c5a-b313-cb04f48dfff3",
+                            Name = "Employee",
+                            NormalizedName = "EMPLOYEE"
                         });
                 });
 
@@ -224,6 +233,79 @@ namespace Trash_Collector_actual_KD.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Trash_Collector_actual_KD.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EmployeeId1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndSuspendService")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OneTimePickup")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartSuspendService")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WeeklyPickupDay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("EmployeeId1");
+
+                    b.ToTable("Customer");
+                });
+
+            modelBuilder.Entity("Trash_Collector_actual_KD.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ServiceAreaZipCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employee");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -273,6 +355,17 @@ namespace Trash_Collector_actual_KD.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Trash_Collector_actual_KD.Models.Customer", b =>
+                {
+                    b.HasOne("Trash_Collector_actual_KD.Models.Employee", null)
+                        .WithMany("CompletedPickups")
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("Trash_Collector_actual_KD.Models.Employee", null)
+                        .WithMany("PendingPickups")
+                        .HasForeignKey("EmployeeId1");
                 });
 #pragma warning restore 612, 618
         }

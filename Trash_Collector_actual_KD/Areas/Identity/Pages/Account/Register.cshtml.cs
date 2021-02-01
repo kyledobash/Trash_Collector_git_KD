@@ -27,17 +27,17 @@ namespace Trash_Collector_actual_KD.Areas.Identity.Pages.Account
         private readonly RoleManager<IdentityUser> _roleManager;
 
         public RegisterModel(
-            RoleManager<IdentityUser> roleManager,
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityUser> roleManager)
         {
-            _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]

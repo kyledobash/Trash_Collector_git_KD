@@ -23,6 +23,18 @@ namespace Trash_Collector_actual_KD.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public IActionResult Register()
+        //{
+
+        //}
+
         public IActionResult Privacy()
         {
             return View();

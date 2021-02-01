@@ -23,18 +23,18 @@ namespace Trash_Collector_actual_KD.Data
         {
             base.OnModelCreating(builder);
             builder.Entity<IdentityRole>()
-            .HasData(
-            new IdentityRole
-            {
-                Name = "Customer",
-                NormalizedName = "CUSTOMER"
-            },
-            new IdentityRole
-            {
-                Name = "Employee",
-                NormalizedName = "EMPLOYEE"
-            }
-            );
+                .HasData(
+                    new IdentityRole
+                    {
+                        Name = "Customer",
+                        NormalizedName = "CUSTOMER"
+                    },
+                    new IdentityRole
+                    {
+                        Name = "Employee",
+                        NormalizedName = "EMPLOYEE"
+                    }
+                );
         }
     }
 }

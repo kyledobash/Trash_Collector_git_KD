@@ -10,6 +10,7 @@ using Trash_Collector_actual_KD.Models;
 
 namespace Trash_Collector_actual_KD.Controllers
 {
+    [Authorize(Roles = "Customer")]
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;

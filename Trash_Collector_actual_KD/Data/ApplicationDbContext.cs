@@ -10,6 +10,10 @@ namespace Trash_Collector_actual_KD.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public DbSet<Customer> Customer { get; set; }
+
+        public DbSet<Employee> Employee { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -27,9 +31,5 @@ namespace Trash_Collector_actual_KD.Data
             }
             );
         }
-
-        public DbSet<Trash_Collector_actual_KD.Models.Customer> Customer { get; set; }
-
-        public DbSet<Trash_Collector_actual_KD.Models.Employee> Employee { get; set; }
     }
 }

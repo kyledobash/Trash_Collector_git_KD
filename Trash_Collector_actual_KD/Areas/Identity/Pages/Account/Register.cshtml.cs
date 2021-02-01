@@ -20,11 +20,11 @@ namespace Trash_Collector_actual_KD.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly RoleManager<IdentityUser> _roleManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityUser> _roleManager;
 
         public RegisterModel(
             RoleManager<IdentityUser> roleManager,

@@ -13,6 +13,12 @@ namespace Trash_Collector_actual_KD.Models
         [Key]
         public int Id { get; set; }
 
+        [ForeignKey("IdentityUser")]
+
+        public string IdentityUserId { get; set; }
+
+        public IdentityUser IdentityUser { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -33,8 +39,5 @@ namespace Trash_Collector_actual_KD.Models
 
         public DateTime EndSuspendService { get; set; }
 
-        [ForeignKey("IdentityUser")]
-        public string IdentityUserId { get; set; }
-        public IdentityUser IdentityUser { get; set; }
     }
 }

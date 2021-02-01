@@ -34,6 +34,7 @@ namespace Trash_Collector_actual_KD.ActionFilters
         }
         public void OnActionExecuted(ActionExecutedContext context)
         {
+
         }
     }
 }

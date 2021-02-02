@@ -25,9 +25,14 @@ namespace Trash_Collector_actual_KD.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Customer customer)
         {
-            return View(await _context.Customer.ToListAsync());
+            //change this query to only show logged in customer
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            customer.IdentityUserId = userId;
+
+            return View(_context.Customer.Where(c => c.IdentityUserId == userId).ToList());
         }
 
         // GET: Customers/Details/5

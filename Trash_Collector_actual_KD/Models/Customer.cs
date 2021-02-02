@@ -19,24 +19,31 @@ namespace Trash_Collector_actual_KD.Models
 
         public IdentityUser IdentityUser { get; set; }
 
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         public string Address { get; set; }
 
+        [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
         public string State { get; set; }
 
         public double Balance { get; set; }
 
+        [Display(Name = "Weekly Pick-up Day")]
         public string WeeklyPickupDay { get; set; }
 
+        [Display(Name = "One-Time Pick-up")]
         public DateTime OneTimePickup { get; set; }
 
+        [Display(Name = "Suspend Service Start Date")]
         public DateTime StartSuspendService { get; set; }
 
+        [Display(Name = "Suspend Service End Date")]
         public DateTime EndSuspendService { get; set; }
 
     }

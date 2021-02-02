@@ -14,9 +14,7 @@ namespace Trash_Collector_actual_KD.Models
         public int Id { get; set; }
 
         [ForeignKey("IdentityUser")]
-
         public string IdentityUserId { get; set; }
-
         public IdentityUser IdentityUser { get; set; }
 
         [Display(Name = "First Name")]

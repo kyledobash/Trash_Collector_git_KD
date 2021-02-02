@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace Trash_Collector_actual_KD.Controllers
 {
 
 
-    [Authorize(Roles = "Customer")]
+    //[Authorize(Roles = "Customer")]
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -62,6 +63,10 @@ namespace Trash_Collector_actual_KD.Controllers
         {
             if (ModelState.IsValid)
             {
+                //grabs primary key of currently logged in user
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                customer.IdentityUserId = userId;
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

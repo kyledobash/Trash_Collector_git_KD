@@ -48,15 +48,15 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0efad313-8b27-4f03-aa5e-3fdd17dd3878",
-                            ConcurrencyStamp = "4c8a411e-708c-468b-91b3-93dc80bd507f",
+                            Id = "bac6d997-ba11-4f3e-910d-eb04e95a94c9",
+                            ConcurrencyStamp = "e72953d7-b0ce-49eb-bc04-c54512c30345",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "c37f58a2-1fec-4cbd-b63d-81c1a2656c78",
-                            ConcurrencyStamp = "274a344d-cfce-4567-a6eb-ee3a0317c0af",
+                            Id = "2a1d3a85-bf4b-4810-add7-30876b61c2bc",
+                            ConcurrencyStamp = "650f74d0-ac9a-4f91-b40e-f9fe672a9d25",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -274,8 +274,8 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<string>("WeeklyPickupDay")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ZipCode")
-                        .HasColumnType("int");
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -304,8 +304,8 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ServiceAreaZipCode")
-                        .HasColumnType("int");
+                    b.Property<string>("ServiceAreaZipCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

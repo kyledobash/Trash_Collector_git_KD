@@ -10,8 +10,8 @@ using Trash_Collector_actual_KD.Data;
 namespace Trash_Collector_actual_KD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210201194024_Initial")]
-    partial class Initial
+    [Migration("20210202195234_NukeAfterZipCodesToStrings")]
+    partial class NukeAfterZipCodesToStrings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cb912a13-203a-4eb5-a039-be8f6c03146f",
-                            ConcurrencyStamp = "951c7239-a162-4c5b-9721-2a512bef020f",
+                            Id = "bac6d997-ba11-4f3e-910d-eb04e95a94c9",
+                            ConcurrencyStamp = "e72953d7-b0ce-49eb-bc04-c54512c30345",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "cb36c253-e546-4e17-8b9b-3255f9938aef",
-                            ConcurrencyStamp = "dbb343f7-87b4-4c5a-b313-cb04f48dfff3",
+                            Id = "2a1d3a85-bf4b-4810-add7-30876b61c2bc",
+                            ConcurrencyStamp = "650f74d0-ac9a-4f91-b40e-f9fe672a9d25",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -258,6 +258,9 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -273,14 +276,16 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<string>("WeeklyPickupDay")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ZipCode")
-                        .HasColumnType("int");
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
                     b.HasIndex("EmployeeId1");
+
+                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("Customer");
                 });
@@ -295,13 +300,18 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ServiceAreaZipCode")
-                        .HasColumnType("int");
+                    b.Property<string>("ServiceAreaZipCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("Employee");
                 });
@@ -366,6 +376,17 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.HasOne("Trash_Collector_actual_KD.Models.Employee", null)
                         .WithMany("PendingPickups")
                         .HasForeignKey("EmployeeId1");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
+                });
+
+            modelBuilder.Entity("Trash_Collector_actual_KD.Models.Employee", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
                 });
 #pragma warning restore 612, 618
         }

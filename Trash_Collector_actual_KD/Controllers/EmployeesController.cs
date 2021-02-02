@@ -27,7 +27,16 @@ namespace Trash_Collector_actual_KD.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             employee.IdentityUserId = userId;
 
-            return View(_context.Employee.Where(c => c.IdentityUserId == userId).ToList());
+            var currentEmployee = _context.Employee.Where(c => c.IdentityUserId == userId).ToList();
+
+
+
+            return View(currentEmployee);
+        }
+
+        public void UpdatePendingPickups(Employee employee)
+        {
+            employee.PendingPickups.Add(_context.Customer.Where(c => c.ZipCode == employee.ServiceAreaZipCode).SingleOrDefault());
         }
 
         // GET: Employees/Details/5

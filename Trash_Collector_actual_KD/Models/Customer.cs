@@ -26,7 +26,7 @@ namespace Trash_Collector_actual_KD.Models
         public string Address { get; set; }
 
         [Display(Name = "Zip Code")]
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
 
         public string State { get; set; }
 

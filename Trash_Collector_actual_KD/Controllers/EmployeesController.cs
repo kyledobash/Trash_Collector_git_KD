@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,6 @@ using Trash_Collector_actual_KD.Models;
 
 namespace Trash_Collector_actual_KD.Controllers
 {
-    [Authorize(Roles = "Employee")]
     public class EmployeesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,9 +22,12 @@ namespace Trash_Collector_actual_KD.Controllers
         }
 
         // GET: Employees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Employee employee)
         {
-            return View(await _context.Employee.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            employee.IdentityUserId = userId;
+
+            return View(_context.Employee.Where(c => c.IdentityUserId == userId).ToList());
         }
 
         // GET: Employees/Details/5
@@ -60,6 +63,9 @@ namespace Trash_Collector_actual_KD.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                employee.IdentityUserId = userId;
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -99,7 +105,13 @@ namespace Trash_Collector_actual_KD.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    var EmployeeInDB = _context.Employee.SingleOrDefault(c => c.Id == id);
+                    EmployeeInDB.FirstName = employee.FirstName;
+                    EmployeeInDB.LastName = employee.LastName;
+                    EmployeeInDB.ServiceAreaZipCode = employee.ServiceAreaZipCode;
+                    EmployeeInDB.PendingPickups = employee.PendingPickups;
+                    EmployeeInDB.CompletedPickups = employee.CompletedPickups;;
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

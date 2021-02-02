@@ -26,7 +26,7 @@ namespace Trash_Collector_actual_KD.Models
         public string LastName { get; set; }
 
         [Display(Name = "Service Area Zip Code")]
-        public int ServiceAreaZipCode { get; set; }
+        public string ServiceAreaZipCode { get; set; }
 
         [Display(Name = "Pending Pick-ups")]
         public List<Customer> PendingPickups { get; set; }

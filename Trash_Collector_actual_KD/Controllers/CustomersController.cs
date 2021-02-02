@@ -92,6 +92,7 @@ namespace Trash_Collector_actual_KD.Controllers
             {
                 return NotFound();
             }
+
             return View(customer);
         }
 
@@ -111,7 +112,17 @@ namespace Trash_Collector_actual_KD.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
+                    var CustomerInDB = _context.Customer.SingleOrDefault(c => c.Id == id);
+                    CustomerInDB.FirstName = customer.FirstName;
+                    CustomerInDB.LastName = customer.LastName;
+                    CustomerInDB.Address= customer.Address;
+                    CustomerInDB.ZipCode = customer.ZipCode;
+                    CustomerInDB.State = customer.State;
+                    CustomerInDB.WeeklyPickupDay = customer.WeeklyPickupDay;
+                    CustomerInDB.OneTimePickup = customer.OneTimePickup;
+                    CustomerInDB.StartSuspendService = customer.StartSuspendService;
+                    CustomerInDB.EndSuspendService = customer.EndSuspendService;
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

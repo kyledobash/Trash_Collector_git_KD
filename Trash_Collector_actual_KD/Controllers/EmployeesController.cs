@@ -22,29 +22,32 @@ namespace Trash_Collector_actual_KD.Controllers
         }
 
         // GET: Employees
-        public async Task<IActionResult> Index(Employee employee)
+        public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            employee.IdentityUserId = userId;
 
             var currentEmployee = _context.Employee.Where(c => c.IdentityUserId == userId).SingleOrDefault();
 
-            UpdatePendingPickups(currentEmployee);
+                var customersInZip = UpdatePendingPickups(currentEmployee);
+                var customers = TodaysPickups(customersInZip);
 
-            return View(currentEmployee);
+            return View(customers);
         }
 
-        public void UpdatePendingPickups(Employee employee)
+        public List<Customer> UpdatePendingPickups(Employee employee)
         {
-            employee.PendingPickups.Add(_context.Customer.Where(c => c.ZipCode == employee.ServiceAreaZipCode).SingleOrDefault());
+            var customersInZip = _context.Customer.Where(c => c.PickupCompleted == false && c.ZipCode == employee.ServiceAreaZipCode).ToList();
+            return customersInZip;
         }
 
-        public void TodaysPickups(Employee employee)
+        public List<Customer> TodaysPickups(List<Customer> customersInZip)
         {
-            DateTime current = new DateTime();
-            current = DateTime.Now;
-            employee.PendingPickups.Remove((Customer)_context.Customer.Where(c => c.WeeklyPickupDay.DayOfWeek != current.DayOfWeek));
+            var currentDay = DateTime.Now.DayOfWeek.ToString();
+
+            var customers = customersInZip.Where(c => c.WeeklyPickupDay == currentDay).ToList();
+            return customers;
         }
+
 
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -125,8 +128,6 @@ namespace Trash_Collector_actual_KD.Controllers
                     EmployeeInDB.FirstName = employee.FirstName;
                     EmployeeInDB.LastName = employee.LastName;
                     EmployeeInDB.ServiceAreaZipCode = employee.ServiceAreaZipCode;
-                    EmployeeInDB.PendingPickups = employee.PendingPickups;
-                    EmployeeInDB.CompletedPickups = employee.CompletedPickups;;
 
                     await _context.SaveChangesAsync();
                 }

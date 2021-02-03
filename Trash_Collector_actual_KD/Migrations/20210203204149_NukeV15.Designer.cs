@@ -10,8 +10,8 @@ using Trash_Collector_actual_KD.Data;
 namespace Trash_Collector_actual_KD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210203153341_changedWeeklyPick-upDayProperty")]
-    partial class changedWeeklyPickupDayProperty
+    [Migration("20210203204149_NukeV15")]
+    partial class NukeV15
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0a0d9de0-1baf-4436-abea-de0dd53bd130",
-                            ConcurrencyStamp = "a2406667-e994-46c2-847a-2582c1e8b56e",
+                            Id = "395ac46e-4e1a-4067-a491-630ba0766d99",
+                            ConcurrencyStamp = "9bb2c4c9-bb79-4aed-b549-6fefbdb0790a",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "fc0db318-537b-44ea-9e70-1d0af6f4801c",
-                            ConcurrencyStamp = "73d1f802-e208-421f-bc97-9cab65877d03",
+                            Id = "b3bb4fdb-cc54-4bb1-81d4-a56111fa3595",
+                            ConcurrencyStamp = "e89351e2-667e-4c42-a114-0062e2a7d0b6",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -246,12 +246,6 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("float");
 
-                    b.Property<int?>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("EmployeeId1")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EndSuspendService")
                         .HasColumnType("datetime2");
 
@@ -267,23 +261,22 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<DateTime>("OneTimePickup")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("PickupCompleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("StartSuspendService")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("WeeklyPickupDay")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("WeeklyPickupDay")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ZipCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("EmployeeId1");
 
                     b.HasIndex("IdentityUserId");
 
@@ -369,14 +362,6 @@ namespace Trash_Collector_actual_KD.Migrations
 
             modelBuilder.Entity("Trash_Collector_actual_KD.Models.Customer", b =>
                 {
-                    b.HasOne("Trash_Collector_actual_KD.Models.Employee", null)
-                        .WithMany("CompletedPickups")
-                        .HasForeignKey("EmployeeId");
-
-                    b.HasOne("Trash_Collector_actual_KD.Models.Employee", null)
-                        .WithMany("PendingPickups")
-                        .HasForeignKey("EmployeeId1");
-
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");

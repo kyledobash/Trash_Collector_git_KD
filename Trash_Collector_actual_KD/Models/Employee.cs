@@ -27,11 +27,5 @@ namespace Trash_Collector_actual_KD.Models
 
         [Display(Name = "Service Area Zip Code")]
         public string ServiceAreaZipCode { get; set; }
-
-        [Display(Name = "Pending Pick-ups")]
-        public List<Customer> PendingPickups { get; set; }
-
-        [Display(Name = "Completed Pick-ups")]
-        public List<Customer> CompletedPickups { get; set; }
     }
 }

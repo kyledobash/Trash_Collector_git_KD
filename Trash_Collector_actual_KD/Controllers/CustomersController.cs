@@ -70,6 +70,7 @@ namespace Trash_Collector_actual_KD.Controllers
 
                 customer.IdentityUserId = userId;
                 _context.Add(customer);
+                customer.PickupCompleted = false;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -48,6 +48,20 @@ namespace Trash_Collector_actual_KD.Controllers
             return customers;
         }
 
+        public IActionResult ConfirmPickup(int id)
+        {
+            var customer = _context.Customer.Where(c => c.Id == id).SingleOrDefault();
+            CompletePickup(customer);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public void CompletePickup(Customer customer)
+        {
+            customer.PickupCompleted = true;
+            customer.Balance += 10.00;
+        }
+
 
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)

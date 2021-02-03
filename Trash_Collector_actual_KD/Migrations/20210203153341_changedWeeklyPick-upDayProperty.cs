@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Trash_Collector_actual_KD.Migrations
 {
-    public partial class NukeAfterZipCodesToStrings : Migration
+    public partial class changedWeeklyPickupDayProperty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -187,7 +187,7 @@ namespace Trash_Collector_actual_KD.Migrations
                     ZipCode = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
                     Balance = table.Column<double>(nullable: false),
-                    WeeklyPickupDay = table.Column<string>(nullable: true),
+                    WeeklyPickupDay = table.Column<DateTime>(nullable: false),
                     OneTimePickup = table.Column<DateTime>(nullable: false),
                     StartSuspendService = table.Column<DateTime>(nullable: false),
                     EndSuspendService = table.Column<DateTime>(nullable: false),
@@ -220,12 +220,12 @@ namespace Trash_Collector_actual_KD.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "bac6d997-ba11-4f3e-910d-eb04e95a94c9", "e72953d7-b0ce-49eb-bc04-c54512c30345", "Customer", "CUSTOMER" });
+                values: new object[] { "0a0d9de0-1baf-4436-abea-de0dd53bd130", "a2406667-e994-46c2-847a-2582c1e8b56e", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2a1d3a85-bf4b-4810-add7-30876b61c2bc", "650f74d0-ac9a-4f91-b40e-f9fe672a9d25", "Employee", "EMPLOYEE" });
+                values: new object[] { "fc0db318-537b-44ea-9e70-1d0af6f4801c", "73d1f802-e208-421f-bc97-9cab65877d03", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

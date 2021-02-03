@@ -33,7 +33,7 @@ namespace Trash_Collector_actual_KD.Models
         public double Balance { get; set; }
 
         [Display(Name = "Weekly Pick-up Day")]
-        public string WeeklyPickupDay { get; set; }
+        public DateTime WeeklyPickupDay { get; set; }
 
         [Display(Name = "One-Time Pick-up")]
         public DateTime OneTimePickup { get; set; }

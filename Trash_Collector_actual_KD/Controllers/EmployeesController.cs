@@ -39,6 +39,13 @@ namespace Trash_Collector_actual_KD.Controllers
             employee.PendingPickups.Add(_context.Customer.Where(c => c.ZipCode == employee.ServiceAreaZipCode).SingleOrDefault());
         }
 
+        public void TodaysPickups(Employee employee)
+        {
+            DateTime current = new DateTime();
+            current = DateTime.Now;
+            employee.PendingPickups.Remove((Customer)_context.Customer.Where(c => c.WeeklyPickupDay.DayOfWeek != current.DayOfWeek));
+        }
+
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {

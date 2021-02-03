@@ -48,15 +48,15 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bac6d997-ba11-4f3e-910d-eb04e95a94c9",
-                            ConcurrencyStamp = "e72953d7-b0ce-49eb-bc04-c54512c30345",
+                            Id = "0a0d9de0-1baf-4436-abea-de0dd53bd130",
+                            ConcurrencyStamp = "a2406667-e994-46c2-847a-2582c1e8b56e",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "2a1d3a85-bf4b-4810-add7-30876b61c2bc",
-                            ConcurrencyStamp = "650f74d0-ac9a-4f91-b40e-f9fe672a9d25",
+                            Id = "fc0db318-537b-44ea-9e70-1d0af6f4801c",
+                            ConcurrencyStamp = "73d1f802-e208-421f-bc97-9cab65877d03",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -271,8 +271,8 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WeeklyPickupDay")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("WeeklyPickupDay")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ZipCode")
                         .HasColumnType("nvarchar(max)");

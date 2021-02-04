@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ZipCode)
             </th>
             <th></th>
@@ -33,6 +36,9 @@
             </td>
             <td>
                 @Html.DisplayFor(model => customer.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(model => customer.ZipCode)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@customer.Id">Details</a> |

@@ -36,7 +36,7 @@ namespace Trash_Collector_actual_KD.Controllers
 
         public List<Customer> UpdatePendingPickups(Employee employee)
         {
-            var customersInZip = _context.Customer.Where(c => c.PickupCompleted == false && c.ZipCode == employee.ServiceAreaZipCode).ToList();
+            List<Customer> customersInZip = _context.Customer.Where(c => c.PickupCompleted == false && c.ZipCode == employee.ServiceAreaZipCode).ToList();
             return customersInZip;
         }
 

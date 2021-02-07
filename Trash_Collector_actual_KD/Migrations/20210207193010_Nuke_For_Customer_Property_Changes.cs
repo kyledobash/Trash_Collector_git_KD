@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Trash_Collector_actual_KD.Migrations
 {
-    public partial class NukeV16 : Migration
+    public partial class Nuke_For_Customer_Property_Changes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -166,9 +166,9 @@ namespace Trash_Collector_actual_KD.Migrations
                     State = table.Column<string>(nullable: true),
                     Balance = table.Column<double>(nullable: false),
                     WeeklyPickupDay = table.Column<string>(nullable: true),
-                    OneTimePickup = table.Column<DateTime>(nullable: false),
-                    StartSuspendService = table.Column<DateTime>(nullable: false),
-                    EndSuspendService = table.Column<DateTime>(nullable: false),
+                    OneTimePickup = table.Column<DateTime>(nullable: true),
+                    StartSuspendService = table.Column<DateTime>(nullable: true),
+                    EndSuspendService = table.Column<DateTime>(nullable: true),
                     PickupCompleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -207,12 +207,12 @@ namespace Trash_Collector_actual_KD.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1ff4d4d5-efe0-4774-9526-981fe38704ed", "5247289d-2c09-4810-9357-d8a80bb2a918", "Customer", "CUSTOMER" });
+                values: new object[] { "da05aa24-d78e-467f-8ea0-bba985b689d1", "78dd68ab-d1fc-4023-bb9f-d98ac1ae4473", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "3ab96e53-0627-439c-b799-7cc1f53ba257", "ee3aa0ae-4986-40f3-9986-4e3a9753f8dd", "Employee", "EMPLOYEE" });
+                values: new object[] { "09917e59-19d5-4b68-96d4-b583f11d1d20", "6646b104-7d5a-4f09-ab9a-035f99c534ce", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

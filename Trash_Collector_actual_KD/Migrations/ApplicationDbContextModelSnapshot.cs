@@ -48,15 +48,15 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1ff4d4d5-efe0-4774-9526-981fe38704ed",
-                            ConcurrencyStamp = "5247289d-2c09-4810-9357-d8a80bb2a918",
+                            Id = "da05aa24-d78e-467f-8ea0-bba985b689d1",
+                            ConcurrencyStamp = "78dd68ab-d1fc-4023-bb9f-d98ac1ae4473",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "3ab96e53-0627-439c-b799-7cc1f53ba257",
-                            ConcurrencyStamp = "ee3aa0ae-4986-40f3-9986-4e3a9753f8dd",
+                            Id = "09917e59-19d5-4b68-96d4-b583f11d1d20",
+                            ConcurrencyStamp = "6646b104-7d5a-4f09-ab9a-035f99c534ce",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -244,7 +244,7 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("EndSuspendService")
+                    b.Property<DateTime?>("EndSuspendService")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
@@ -256,13 +256,13 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("OneTimePickup")
+                    b.Property<DateTime?>("OneTimePickup")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("PickupCompleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("StartSuspendService")
+                    b.Property<DateTime?>("StartSuspendService")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("State")

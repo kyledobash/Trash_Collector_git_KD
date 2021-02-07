@@ -36,13 +36,13 @@ namespace Trash_Collector_actual_KD.Models
         public string WeeklyPickupDay { get; set; }
 
         [Display(Name = "One-Time Pick-up")]
-        public DateTime OneTimePickup { get; set; }
+        public DateTime? OneTimePickup { get; set; }
 
         [Display(Name = "Suspend Service Start Date")]
-        public DateTime StartSuspendService { get; set; }
+        public DateTime? StartSuspendService { get; set; }
 
         [Display(Name = "Suspend Service End Date")]
-        public DateTime EndSuspendService { get; set; }
+        public DateTime? EndSuspendService { get; set; }
 
         public bool PickupCompleted { get; set; }
 

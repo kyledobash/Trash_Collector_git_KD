@@ -62,7 +62,6 @@ namespace Trash_Collector_actual_KD.Controllers
             customer.Balance += 10.00;
         }
 
-
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -71,14 +70,14 @@ namespace Trash_Collector_actual_KD.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
+            var customer = await _context.Customer
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(customer);
         }
 
         // GET: Employees/Create

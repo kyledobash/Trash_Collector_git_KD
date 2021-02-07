@@ -30,11 +30,6 @@ namespace Trash_Collector_actual_KD.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Register()
-        //{
-
-        //}
 
         public IActionResult Privacy()
         {

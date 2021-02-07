@@ -45,6 +45,5 @@ namespace Trash_Collector_actual_KD.Models
         public DateTime? EndSuspendService { get; set; }
 
         public bool PickupCompleted { get; set; }
-
     }
 }

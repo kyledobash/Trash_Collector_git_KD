@@ -10,8 +10,8 @@ using Trash_Collector_actual_KD.Data;
 namespace Trash_Collector_actual_KD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210207193010_Nuke_For_Customer_Property_Changes")]
-    partial class Nuke_For_Customer_Property_Changes
+    [Migration("20210207212344_Nuke_Again_More_Property_Changes")]
+    partial class Nuke_Again_More_Property_Changes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace Trash_Collector_actual_KD.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "da05aa24-d78e-467f-8ea0-bba985b689d1",
-                            ConcurrencyStamp = "78dd68ab-d1fc-4023-bb9f-d98ac1ae4473",
+                            Id = "0cf610da-1766-4d38-b73a-94df6e3c6eed",
+                            ConcurrencyStamp = "f376db67-c0be-4df2-8109-5105361861a4",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "09917e59-19d5-4b68-96d4-b583f11d1d20",
-                            ConcurrencyStamp = "6646b104-7d5a-4f09-ab9a-035f99c534ce",
+                            Id = "df98d06f-b0b5-4289-9cc6-24888621dbd5",
+                            ConcurrencyStamp = "1d1400bf-d16a-4cdf-b2f9-e7eb16e7c7b4",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });

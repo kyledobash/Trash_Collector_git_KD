@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
+@*<style>
     #map {
         height: 500px;
         width: 500px;        
     }
-</style>
+</style>*@
 
 
 <body>
@@ -80,52 +80,9 @@
             </dd>
         </dl>
     </div>
-        <div id="map"></div>
-        <script>
-            function initMap() {
-                //Map options
-                var options = {
-                        zoom: 15,
-                        center: { lat: 42.3601, lng: -71.0589 }
-                    }
-                    //New map
-                    var map = new google.maps.Map(document.getElementById('map'), options);
+        
 
-                    //add Marker
-                    var marker = new google.maps.Marker({
-                        position: { lat: 42.3601, lng: -71.0589 },
-                        map: map
-                    });
 
-                    var infoWindow = new google.maps.infoWindow({
-                        content:'<p>test</p>'
-
-                                @*@Html.DisplayFor(model => model.FirstName)
-                                 @Html.DisplayFor(model => model.LastName)
-                                 @Html.DisplayFor(model => model.Address)
-                                 @Html.DisplayFor(model => model.ZipCode)
-                                 @Html.DisplayFor(model => model.State)*@
-
-                    });
-
-                    marker.addListener('click', function () {
-                     infoWindow.open(map, marker);
-                    });
-
-                    addMarker({ lat: 42.3601, lng: -71.0589 });
-
-                    //Add marker function
-                    function addMarker(coords) {
-                        var marker = new google.maps.Marker({
-                            position: coords,
-                            map: map
-                        });
-                    }
-                }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlC_4uiy85NvgfnB0scua9DTv_SycR--c&callback=initMap&libraries=&v=weekly"
-                async>
-        </script>
 </body>
 
 <div>

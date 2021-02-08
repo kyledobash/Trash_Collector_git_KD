@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Trash_Collector_actual_KD.Migrations
 {
-    public partial class Nuke_Again_More_Property_Changes : Migration
+    public partial class Final_Nuke : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -207,12 +207,12 @@ namespace Trash_Collector_actual_KD.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "0cf610da-1766-4d38-b73a-94df6e3c6eed", "f376db67-c0be-4df2-8109-5105361861a4", "Customer", "CUSTOMER" });
+                values: new object[] { "50499a0d-5ab4-4eaa-b54c-ee8eb228929e", "da791a69-81f2-412b-9f26-1cc9976cbea1", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "df98d06f-b0b5-4289-9cc6-24888621dbd5", "1d1400bf-d16a-4cdf-b2f9-e7eb16e7c7b4", "Employee", "EMPLOYEE" });
+                values: new object[] { "f2b2967a-41f5-4f81-9ae4-29178e85260b", "faf49add-1bc8-4c3c-98ef-9d606dec759c", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
